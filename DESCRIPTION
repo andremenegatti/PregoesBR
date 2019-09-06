@@ -1,12 +1,11 @@
 Package: PregoesBR
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Functions for analyzing data from Comprasnet and BEC-SP auctions
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: Andre Luis Menegatti
+Maintainer: Andre Luis Menegatti <andre.menegatti@usp.br>
+Description: Functions for analyzing pre-processed data from procurement auctions in Brazil.
+License: GLP-3
 Encoding: UTF-8
 LazyData: true
 Depends: ggplot2, tibble, tidyr, readr, purrr, dplyr, stringr, forcats, lubridate
