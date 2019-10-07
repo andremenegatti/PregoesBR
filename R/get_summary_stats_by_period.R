@@ -1,4 +1,4 @@
-get_summary_stats_by_period2 <- function(df, var, time_var, gather = FALSE, pretty_names = TRUE) {
+get_summary_stats_by_period <- function(df, var, time_var, gather = FALSE, pretty_names = TRUE) {
 
   x <- deparse(substitute(time_var))
 
