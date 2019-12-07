@@ -10,7 +10,7 @@ build_dd_df <- function(df) {
            ## Incluindo prefixo para facilitar identificacao
            unidade_compradora = as.factor(str_c('unidade_', unidade_compradora)),
            marca_vencedor = as.factor(str_c('marca_', marca_vencedor_principais)),
-           kg_por_unid = as.factor(str_c('kg_por_unid_', kg_por_unid)),
+           kg_por_unid = as.factor(str_c('_', kg_por_unid)) %>% relevel('_0.5'),
            # Cirando variaveis de tendencias (inicio em 0)
            trend_mes = dense_rank(inicio_mes) - 1,
            trend_bimestre = dense_rank(inicio_bimestre) - 1,
@@ -43,6 +43,8 @@ build_dd_df <- function(df) {
     # Criando variavel log_win_bid
     mutate(log_win_bid = log(win_bid)) %>%
     # Criando factor comprasnet
-    mutate(comprasnet_factor = factor(comprasnet, levels = c(1, 0), labels = c('cnet', 'bec')))
+    mutate(comprasnet_factor = factor(comprasnet, levels = c(1, 0), labels = c('cnet', 'bec'))) %>%
+    mutate(qualidade = relevel(qualidade, ref = 'TRADICIONAL'),
+           qualidade2 = relevel(qualidade2, ref = 'TRADICIONAL'))
 
 }
