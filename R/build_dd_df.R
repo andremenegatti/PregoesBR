@@ -41,7 +41,7 @@ build_dd_df <- function(df) {
     # Transformando todas as variaveis de texto em factors
     mutate_if(is.character, as.factor) %>%
     # Criando variavel log_win_bid
-    mutate(log_win_bid = log(win_bid)) %>%
+    mutate(log_win_bid = log(win_bid_kg)) %>%
     # Criando factor comprasnet
     mutate(comprasnet_factor = factor(comprasnet, levels = c(1, 0), labels = c('cnet', 'bec'))) %>%
     mutate(qualidade = relevel(qualidade, ref = 'TRADICIONAL'),
