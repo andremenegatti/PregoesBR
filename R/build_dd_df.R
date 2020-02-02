@@ -11,7 +11,7 @@ build_dd_df <- function(df) {
            unidade_compradora = as.factor(str_c('unidade_', unidade_compradora)),
            marca_vencedor = as.factor(str_c('marca_', marca_vencedor_principais)),
            kg_por_unid = as.factor(str_c('_', kg_por_unid)) %>% relevel('_0.5'),
-           # Cirando variaveis de tendencias (inicio em 0)
+           # Criando variaveis de tendencias (inicio em 0)
            trend_mes = dense_rank(inicio_mes) - 1,
            trend_bimestre = dense_rank(inicio_bimestre) - 1,
            trend_trimestre = dense_rank(inicio_trimestre) - 1
