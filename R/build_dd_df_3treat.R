@@ -1,6 +1,10 @@
-build_dd_df <- function(df) {
+build_dd_df_3treat <- function(df) {
+
+  data_publicacao <- as.Date('2013-10-07')
+
   df %>%
-    mutate(treat1 = if_else(comprasnet == 1 & abertura_lances >= data_20s & abertura_lances < data_3s, 1, 0),
+    mutate(treat1 = if_else(comprasnet == 1 & abertura_lances >= data_20s & abertura_lances < data_publicacao, 1, 0),
+           treat_pub = ifelse(comprasnet == 1 & abertura_lances >= data_publicacao & abertura_lances < data_3s, 1, 0),
            treat2 = if_else(comprasnet == 1 & abertura_lances >= data_3s, 1, 0),
            # Criando dummies/factors de tempo
            trimestre = factor(inicio_trimestre),
@@ -22,9 +26,9 @@ build_dd_df <- function(df) {
       abertura_lances < data_20s ~ 1,
       abertura_lances >= data_20s & abertura_lances < data_3s ~ 2,
       abertura_lances >= data_3s ~ 3
-      ) %>%
-        as.factor()
-      ) %>%
+    ) %>%
+      as.factor()
+    ) %>%
     # Agrupando por regime juridico para criacao das tendencias por regime
     group_by(regime_juridico) %>%
     mutate(indice_mes_por_regime = dense_rank(inicio_mes) - 1,
